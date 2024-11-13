@@ -40,11 +40,29 @@ if (!isset($_SESSION['S_IDUSUARIO'])) { //si existe
 
             <!-- IMPORTS-->
             <div class="row">
-            <div class="col-xl-3">
+                <div class="col-xl-3">
+                    <div class="card">
+                        <form method="POST" enctype="multipart/form-data" id="cargar_paciente">
+                            <div class="card-body">
+
+                                <h4 class="card-title">Importar Ficha <b>PACIENTE</b></h4>
+                                <p class="card-subtitle mb-4">Subir Excel </p>
+
+                                <input type="file" class="dropify" data-height="100" name="filePaciente" id="filePaciente" accept=".xls, .xlsx, .xml, .csv" />
+
+                            </div> <!-- end card-body-->
+                            <div class="col-12 m-2">
+                                <button type="submit" class="btn btn-primary btn-block" id="btnCargarPaciente">Subir</button>
+                            </div>
+                        </form>
+                    </div> <!-- end card-->
+                </div> <!-- end col -->
+
+                <div class="col-xl-3">
                     <div class="card">
                         <div class="card-body">
 
-                            <h4 class="card-title">Importar Ficha <b>PACIENTE</b></h4>
+                            <h4 class="card-title">Importar Ficha <b>PERSONAL</b></h4>
                             <p class="card-subtitle mb-4">Subir Excel </p>
 
                             <input type="file" class="dropify" data-height="100" />
@@ -60,8 +78,8 @@ if (!isset($_SESSION['S_IDUSUARIO'])) { //si existe
                     <div class="card">
                         <div class="card-body">
 
-                        <h4 class="card-title">Importar Ficha <b>PERSONAL</b></h4>
-                        <p class="card-subtitle mb-4">Subir Excel </p>
+                            <h4 class="card-title">Importar Ficha <b>REGISTRADOR</b></h4>
+                            <p class="card-subtitle mb-4">Subir Excel </p>
 
                             <input type="file" class="dropify" data-height="100" />
 
@@ -76,26 +94,10 @@ if (!isset($_SESSION['S_IDUSUARIO'])) { //si existe
                     <div class="card">
                         <div class="card-body">
 
-                        <h4 class="card-title">Importar Ficha <b>REGISTRADOR</b></h4>
-                        <p class="card-subtitle mb-4">Subir Excel </p>
+                            <h4 class="card-title">Importar Ficha <b>NOMINAL</b></h4>
+                            <p class="card-subtitle mb-4">Subir Excel </p>
 
                             <input type="file" class="dropify" data-height="100" />
-
-                        </div> <!-- end card-body-->
-                        <div class="col-12 m-2">
-                            <button type="submit" class="btn btn-primary btn-block" onclick="Inciar_Sesion()">Subir</button>
-                        </div>
-                    </div> <!-- end card-->
-                </div> <!-- end col -->
-
-                <div class="col-xl-3">
-                    <div class="card">
-                        <div class="card-body">
-
-                        <h4 class="card-title">Importar Ficha <b>NOMINAL</b></h4>
-                        <p class="card-subtitle mb-4">Subir Excel </p>
-
-                            <input type="file" class="dropify" data-height="100"  />
 
                         </div> <!-- end card-body-->
                         <div class="col-12 m-2">
