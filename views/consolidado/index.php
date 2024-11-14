@@ -219,6 +219,8 @@ if (!isset($_SESSION['S_IDUSUARIO'])) { //si existe
         </div> <!-- container-fluid -->
     </div>
     <!-- End Page-content -->
+
+  
     <?php
     include_once "../layouts/footer.php";
     ?>
