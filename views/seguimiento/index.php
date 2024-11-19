@@ -28,8 +28,8 @@ if (!isset($_SESSION['S_IDUSUARIO'])) { //si existe
 
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
-                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Atras</a></li>
-                                        <li class="breadcrumb-item active">Datatables</li>
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">DASHBOARD</a></li>
+                                        <li class="breadcrumb-item active">SEGUIMIENTO</li>
                                     </ol>
                                 </div>
                                 
