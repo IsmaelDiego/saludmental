@@ -47,7 +47,7 @@ foreach ($lineas as $linea) {
 
     $i++;
 }
-
+echo '<p style="text-aling:center; color:#333;">Total de Registros: ' . $cantidad_regist_agregados . '</p>';
 ?>
 
 <a href="index.php">Atras</a>

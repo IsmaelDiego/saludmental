@@ -96,7 +96,7 @@ if (!isset($_SESSION['S_IDUSUARIO'])) { //si existe
 
                 <div class="col-xl-3">
                     <div class="card">
-                        <form method="POST" action="../../EXCEL/registrador.php" enctype="multipart/form-data">
+                        <form method="POST" action="../../EXCEL/nominal.php" enctype="multipart/form-data">
                             <div class="card-body">
 
                                 <h4 class="card-title">Importar Ficha <b>NOMINAL</b></h4>
