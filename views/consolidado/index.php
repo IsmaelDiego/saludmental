@@ -111,6 +111,9 @@ if (!isset($_SESSION['S_IDUSUARIO'])) { //si existe
                         </form>
                     </div> <!-- end card-->
                 </div> <!-- end col -->
+                <div class="col-12 mb-2">
+                    <button type="submit" class="btn btn-primary btn-block" id="btnCargarNominal">Subir</button>
+                </div>
             </div>
             <!-- end row-->
 
@@ -219,12 +222,10 @@ if (!isset($_SESSION['S_IDUSUARIO'])) { //si existe
             <!-- end row-->
 
 
-
-
-
         </div> <!-- container-fluid -->
     </div>
     <!-- End Page-content -->
+
 
     <?php
     include_once "../layouts/footer.php";

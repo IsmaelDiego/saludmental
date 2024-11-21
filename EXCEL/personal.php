@@ -1,5 +1,5 @@
 <?php
-require('config.php');
+require('conn.php');
 $tipo       = $_FILES['filePersonal']['type'];
 $tamanio    = $_FILES['filePersonal']['size'];
 $archivotmp = $_FILES['filePersonal']['tmp_name'];

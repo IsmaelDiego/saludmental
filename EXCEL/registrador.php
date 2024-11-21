@@ -1,5 +1,5 @@
 <?php
-require('config.php');
+require('conn.php');
 $tipo       = $_FILES['fileRegistrador']['type'];
 $tamanio    = $_FILES['fileRegistrador']['size'];
 $archivotmp = $_FILES['fileRegistrador']['tmp_name'];
