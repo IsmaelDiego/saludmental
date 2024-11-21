@@ -156,7 +156,7 @@
                 </div>
 
                 <!--- Sidemenu -->
-                <div id="sidebar-menu">
+                <div id="sidebar-menu" class="scroll">
                     <!-- Left Menu Start -->
                     <ul class="metismenu list-unstyled" id="side-menu">
                         <li>
