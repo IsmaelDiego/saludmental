@@ -13,7 +13,7 @@ foreach ($lineas as $linea) {
 
     if ($i != 0) {
 
-        $datos = explode(";", $linea);
+        $datos = explode(",", $linea);
 
         $Id_Paciente  =                 !empty($datos[0])  ? ($datos[0]) : '';
         $Id_Tipo_Documento  =           !empty($datos[1])  ? ($datos[1]) : '';
