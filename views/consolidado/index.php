@@ -60,51 +60,60 @@ if (!isset($_SESSION['S_IDUSUARIO'])) { //si existe
 
                 <div class="col-xl-3">
                     <div class="card">
-                        <div class="card-body">
+                        <form method="POST" action="../../EXCEL/personal.php" enctype="multipart/form-data">
+                            <div class="card-body">
 
-                            <h4 class="card-title">Importar Ficha <b>PERSONAL</b></h4>
-                            <p class="card-subtitle mb-4">Subir Excel </p>
+                                <h4 class="card-title">Importar Ficha <b>PERSONAL</b></h4>
+                                <p class="card-subtitle mb-4">Subir Excel </p>
 
-                            <input type="file" class="dropify" data-height="100" />
+                                <input type="file" class="dropify" data-height="100" name="filePersonal" id="filePersonal" />
 
-                        </div> <!-- end card-body-->
-                        <div class="col-12 m-2">
-                            <button type="submit" class="btn btn-primary btn-block" onclick="Inciar_Sesion()">Subir</button>
-                        </div>
+                            </div> <!-- end card-body-->
+                            <div class="col-12 m-2">
+                                <button type="submit" class="btn btn-primary btn-block" id="btnCargarPersonal">Subir</button>
+                            </div>
+                        </form>
                     </div> <!-- end card-->
                 </div> <!-- end col -->
 
                 <div class="col-xl-3">
                     <div class="card">
-                        <div class="card-body">
+                        <form method="POST" action="../../EXCEL/registrador.php" enctype="multipart/form-data">
+                            <div class="card-body">
 
-                            <h4 class="card-title">Importar Ficha <b>REGISTRADOR</b></h4>
-                            <p class="card-subtitle mb-4">Subir Excel </p>
+                                <h4 class="card-title">Importar Ficha <b>REGISTRADOR</b></h4>
+                                <p class="card-subtitle mb-4">Subir Excel </p>
 
-                            <input type="file" class="dropify" data-height="100" />
+                                <input type="file" class="dropify" data-height="100" name="fileRegistrador" id="fileRegistrador" />
 
-                        </div> <!-- end card-body-->
-                        <div class="col-12 m-2">
-                            <button type="submit" class="btn btn-primary btn-block" onclick="Inciar_Sesion()">Subir</button>
-                        </div>
+                            </div> <!-- end card-body-->
+                            <div class="col-12 m-2">
+                                <button type="submit" class="btn btn-primary btn-block" id="btnCargarRegistrador">Subir</button>
+                            </div>
+                        </form>
                     </div> <!-- end card-->
                 </div> <!-- end col -->
 
                 <div class="col-xl-3">
                     <div class="card">
-                        <div class="card-body">
+                        <form method="POST" action="../../EXCEL/registrador.php" enctype="multipart/form-data">
+                            <div class="card-body">
 
-                            <h4 class="card-title">Importar Ficha <b>NOMINAL</b></h4>
-                            <p class="card-subtitle mb-4">Subir Excel </p>
+                                <h4 class="card-title">Importar Ficha <b>NOMINAL</b></h4>
+                                <p class="card-subtitle mb-4">Subir Excel </p>
 
-                            <input type="file" class="dropify" data-height="100" />
+                                <input type="file" class="dropify" data-height="100" name="fileNominal" id="fileNominal" />
 
-                        </div> <!-- end card-body-->
-                        <div class="col-12 m-2">
-                            <button type="submit" class="btn btn-primary btn-block" onclick="Inciar_Sesion()">Subir</button>
-                        </div>
+                            </div> <!-- end card-body-->
+                            <div class="col-12 m-2">
+                                <button type="submit" class="btn btn-primary btn-block" id="btnCargarNominal">Subir</button>
+                            </div>
+                        </form>
                     </div> <!-- end card-->
                 </div> <!-- end col -->
+                <div class="col-12 mb-2">
+                    <button type="submit" class="btn btn-primary btn-block" id="btnCargarNominal">Subir</button>
+                </div>
             </div>
             <!-- end row-->
 
@@ -213,12 +222,10 @@ if (!isset($_SESSION['S_IDUSUARIO'])) { //si existe
             <!-- end row-->
 
 
-
-
-
         </div> <!-- container-fluid -->
     </div>
     <!-- End Page-content -->
+
 
     <?php
     include_once "../layouts/footer.php";

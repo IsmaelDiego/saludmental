@@ -1,8 +1,8 @@
 <?php
-require('config.php');
-$tipo       = $_FILES['dataCliente']['type'];
-$tamanio    = $_FILES['dataCliente']['size'];
-$archivotmp = $_FILES['dataCliente']['tmp_name'];
+require('conn.php');
+$tipo       = $_FILES['filePersonal']['type'];
+$tamanio    = $_FILES['filePersonal']['size'];
+$archivotmp = $_FILES['filePersonal']['tmp_name'];
 $lineas     = file($archivotmp);
 
 $i = 0;
@@ -15,40 +15,56 @@ foreach ($lineas as $linea) {
 
         $datos = explode(";", $linea);
 
-        $nombre                = !empty($datos[0])  ? ($datos[0]) : '';
-        $correo                = !empty($datos[1])  ? ($datos[1]) : '';
-        $celular               = !empty($datos[2])  ? ($datos[2]) : '';
+        $Id_Personal                 = !empty($datos[0])  ? ($datos[0]) : '';
+        $Id_Tipo_Documento           = !empty($datos[1])  ? ($datos[1]) : '';
+        $Numero_Documento            = !empty($datos[2])  ? ($datos[2]) : '';
+        $Apellido_Paterno_Personal   = !empty($datos[3])  ? ($datos[3]) : '';
+        $Apellido_Materno_Personal   = !empty($datos[4])  ? ($datos[4]) : '';
+        $Nombres_Personal            = !empty($datos[5])  ? ($datos[5]) : '';
+        $Fecha_Nacimiento            = !empty($datos[6])  ? ($datos[6]) : '';
+        $Id_Condicion                = !empty($datos[7])  ? ($datos[7]) : '';
+        $Id_Profesion                = !empty($datos[8])  ? ($datos[8]) : '';
+        $Id_Colegio                  = !empty($datos[9])  ? ($datos[9]) : '';
+        $Numero_Colegiatura          = !empty($datos[10])  ? ($datos[10]) : '';
+        $Id_Establecimiento          = !empty($datos[11])  ? ($datos[11]) : '';
+        $Fecha_Alta                  = !empty($datos[12])  ? ($datos[12]) : '';
+        $Fecha_Baja                  = !empty($datos[13])  ? ($datos[13]) : '';
 
-        if (!empty($celular)) {
-            $checkemail_duplicidad = ("SELECT celular FROM clientes WHERE celular='" . ($celular) . "' ");
-            $ca_dupli = mysqli_query($con, $checkemail_duplicidad);
-            $cant_duplicidad = mysqli_num_rows($ca_dupli);
-        }
 
-        //No existe Registros Duplicados
-        if ($cant_duplicidad == 0) {
-
-            $insertarData = "INSERT INTO clientes( 
-    nombre,
-    correo,
-    celular
-) VALUES(
-    '$nombre',
-    '$correo',
-    '$celular'
-)";
+            $insertarData = "INSERT INTO personal( 
+                Id_Personal,
+                Id_Tipo_Documento,
+                Numero_Documento,
+                Apellido_Paterno_Personal,
+                Apellido_Materno_Personal,
+                Nombres_Personal,
+                Fecha_Nacimiento,
+                Id_Condicion,
+                Id_Profesion,
+                Id_Colegio,
+                Numero_Colegiatura,
+                Id_Establecimiento,
+                Fecha_Alta,
+                Fecha_Baja
+                
+            ) VALUES(
+                '$Id_Personal',
+                '$Id_Tipo_Documento',
+                '$Numero_Documento',
+                '$Apellido_Paterno_Personal',
+                '$Apellido_Materno_Personal',
+                '$Nombres_Personal',
+                '$Fecha_Nacimiento',
+                '$Id_Condicion',
+                '$Id_Profesion',
+                '$Id_Colegio',
+                '$Numero_Colegiatura',
+                '$Id_Establecimiento',
+                '$Fecha_Alta',
+                '$Fecha_Baja'
+                
+            )";
             mysqli_query($con, $insertarData);
-        }
-        /**Caso Contrario actualizo el o los Registros ya existentes*/
-        else {
-            $updateData =  ("UPDATE clientes SET 
-        nombre='" . $nombre . "',
-		correo='" . $correo . "',
-        celular='" . $celular . "'  
-        WHERE celular='" . $celular . "'
-    ");
-            $result_update = mysqli_query($con, $updateData);
-        }
     }
 
     $i++;
