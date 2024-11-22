@@ -62,7 +62,7 @@ foreach ($lineas as $linea) {
         $Id_AplicacionOrigen =                  !empty($datos[44])  ? ($datos[44]) : '';
         $Alerta =                               !empty($datos[45])  ? ($datos[45]) : '';
 
-        $insertar = "INSERT INTO nominal( 
+        $insertar = "INSERT IGNORE INTO nominal( 
             Id_Cita,                        
             Anio,                           
             Mes,                            
