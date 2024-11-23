@@ -37,67 +37,56 @@ foreach ($lineas as $linea) {
         $Fecha_Alta =                   !empty($datos[19])  ? ($datos[19]) : '';
         $Fecha_Modificacion =           !empty($datos[20])  ? ($datos[20]) : '';
 
-        // Obtener el último valor de id_nominal
-        $query_max_id = "SELECT MAX(id_nominal) AS max_id FROM paciente";
-        $result = mysqli_query($con, $query_max_id);
-        $row = mysqli_fetch_assoc($result);
-
-        // Extraer el valor numérico del último id_nominal
-        $last_id = isset($row['max_id']) ? intval(preg_replace('/\D/', '', $row['max_id'])) : 0;
-
-        // Generar el nuevo id_nominal incrementando el valor anterior
-        $new_id_nominal = sprintf('NOM%05d', $last_id + 1); // Ejemplo: NOM00001, NOM00002, etc.
-
-        // Insertar el nuevo registro con el id_nominal generado
-        $insertar = "INSERT INTO paciente(
-            id_nominal,
+        $insertar = "INSERT INTO paciente( 
             Id_Paciente,
-            Id_Tipo_Documento,
+			Id_Tipo_Documento,
             Numero_Documento,
             Apellido_Paterno_Paciente,
-            Apellido_Materno_Paciente,
+			Apellido_Materno_Paciente,
             Nombres_Paciente,
             Fecha_Nacimiento,
-            Genero,
+			Genero,
             Id_Etnia,
             Historia_Clinica,
-            Ficha_Familiar,
+			Ficha_Familiar,
             Ubigeo_Nacimiento,
             Ubigeo_Reniec,
-            Domicilio_Reniec,
+			Domicilio_Reniec,
             Ubigeo_Declarado,
             Domicilio_Declarado,
-            Referencia_Domicilio,
+			Referencia_Domicilio,
             Id_Pais,
             Id_Establecimiento,
-            Fecha_Alta,
+			Fecha_Alta,
             Fecha_Modificacion
-        ) VALUES (
-            '$new_id_nominal',
+        ) VALUES(
             '$Id_Paciente',
-            '$Id_Tipo_Documento',
+			'$Id_Tipo_Documento',
             '$Numero_Documento',
             '$Apellido_Paterno_Paciente',
-            '$Apellido_Materno_Paciente',
+			'$Apellido_Materno_Paciente',
             '$Nombres_Paciente',
             '$Fecha_Nacimiento',
-            '$Genero',
+			'$Genero',
             '$Id_Etnia',
             '$Historia_Clinica',
-            '$Ficha_Familiar',
+			'$Ficha_Familiar',
             '$Ubigeo_Nacimiento',
             '$Ubigeo_Reniec',
-            '$Domicilio_Reniec',
+			'$Domicilio_Reniec',
             '$Ubigeo_Declarado',
             '$Domicilio_Declarado',
-            '$Referencia_Domicilio',
+			'$Referencia_Domicilio',
             '$Id_Pais',
             '$Id_Establecimiento',
-            '$Fecha_Alta',
+			'$Fecha_Alta',
             '$Fecha_Modificacion'
+
         )";
         mysqli_query($con, $insertar);
     }
+
+    echo '<div>' . $i . "). " . $linea . '</div>';
     $i++;
 }
 

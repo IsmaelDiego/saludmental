@@ -1,39 +1,60 @@
 <?php
 require('conn.php');
-$tipo       = $_FILES['fileRegistrador']['type'];
-$tamanio    = $_FILES['fileRegistrador']['size'];
-$archivotmp = $_FILES['fileRegistrador']['tmp_name'];
-$lineas     = file($archivotmp);
+require '../vendor/autoload.php'; // Incluye PHPSpreadsheet
 
-$i = 0;
+use PhpOffice\PhpSpreadsheet\IOFactory;
 
-foreach ($lineas as $linea) {
-    $cantidad_registros = count($lineas);
-    $cantidad_regist_agregados =  ($cantidad_registros - 1);
+$tipo       = $_FILES['filePaciente']['type'];
+$tamanio    = $_FILES['filePaciente']['size'];
+$archivotmp = $_FILES['filePaciente']['tmp_name'];
 
-    if ($i != 0) {
+try {
+    // Cargar el archivo Excel
+    $spreadsheet = IOFactory::load($archivotmp);
+    $worksheet = $spreadsheet->getActiveSheet();
 
-        $datos = explode(",", $linea);
+    $i = 0; // Contador de filas procesadas
+    $cantidad_registros = $worksheet->getHighestRow(); // Total de filas en el archivo
 
-        $Codigo_Item                 = !empty($datos[0])  ? ($datos[0]) : '';
-        $Descripcion_Item           = !empty($datos[1])  ? ($datos[1]) : '';
-        
-
-            $insertarData = "INSERT INTO 	cpms( 
+    foreach ($worksheet->getRowIterator() as $row) {
+        $cellIterator = $row->getCellIterator();
+        $cellIterator->setIterateOnlyExistingCells(false);
+    
+        $datos = [];
+        foreach ($cellIterator as $cell) {
+            $datos[] = $cell->getValue(); // Obtener el valor de cada celda
+        }
+    
+        // Ignorar la primera fila (asumiendo que son los encabezados)
+        if ($i != 0) {
+            $Codigo_Item = !empty($datos[0]) ? mysqli_real_escape_string($con, $datos[0]) : '';
+            $Descripcion_Item = !empty($datos[1]) ? mysqli_real_escape_string($con, $datos[1]) : '';
+    
+            // Insertar los datos en la tabla
+            $insertarData = "INSERT INTO cpms (
                 Codigo_Item,
                 Descripcion_Item
-                
-            ) VALUES(
+            ) VALUES (
                 '$Codigo_Item',
                 '$Descripcion_Item'
-                
             )";
-            mysqli_query($con, $insertarData);
+    
+            // Ejecutar la consulta y verificar errores
+            if (!mysqli_query($con, $insertarData)) {
+                echo 'Error en la consulta: ' . mysqli_error($con);
+            }
+        }
+    
+        $i++;
     }
+    
 
-    $i++;
+    // Mostrar el total de registros procesados (restando 1 por el encabezado)
+    $cantidad_regist_agregados = $cantidad_registros - 1;
+    echo '<p style="text-align:center; color:#333;">Total de Registros: ' . $cantidad_regist_agregados . '</p>';
+} catch (Exception $e) {
+    echo 'Error al procesar el archivo: ', $e->getMessage();
 }
-echo '<p style="text-aling:center; color:#333;">Total de Registros: ' . $cantidad_regist_agregados . '</p>';
 ?>
 
-<a href="index.php">Atras</a>
+<a href="index.php">Atrás</a>
